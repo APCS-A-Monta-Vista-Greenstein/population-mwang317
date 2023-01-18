@@ -27,6 +27,8 @@ public class Population {
 		pop.run();
 	}
 	
+	/**	Determines what to do based on user input
+	 */
 	public void run(){
 		readFile();
 		printIntroduction();
@@ -57,6 +59,9 @@ public class Population {
 		System.out.println("\nThanks for using Population!");
 	}
 	
+	/**	Finds all cities that match the city name the user inputs and
+	 * 	prints them out
+	 */
 	public void findCity(){
 		List<City> match = new ArrayList<City>();
 		
@@ -89,6 +94,9 @@ public class Population {
 		System.out.println();
 	}
 	
+	/**	Finds and prints the top 50 cities in the user's inputed state 
+	 * 	by population
+	 */
 	private void stateCities(){
 		String[] states = new String[]{"Alabama", "Alaska", "Arizona", "Arkansas",
 			"California", "Colorado", "Connecticut", "Delaware", "Florida",
@@ -137,6 +145,8 @@ public class Population {
 		System.out.println();
 	}
 	
+	/**	Sorts the states by descending name and prints the top 50
+	 */
 	public void descendingName(){
 		SortMethods sm = new SortMethods();
 		long startMillisec = System.currentTimeMillis();
@@ -156,6 +166,8 @@ public class Population {
 			+ " milliseconds\n");
 	}
 	
+	/**	Sorts the states by ascending name and prints the top 50
+	 */
 	public void ascendingName(){
 		SortMethods sm = new SortMethods();
 		long startMillisec = System.currentTimeMillis();
@@ -175,6 +187,8 @@ public class Population {
 			+ " milliseconds\n");
 	}
 	
+	/**	Sorts the states by descending population and prints the top 50
+	 */
 	public void descendingPop(){
 		SortMethods sm = new SortMethods();
 		long startMillisec = System.currentTimeMillis();
@@ -194,6 +208,8 @@ public class Population {
 			+ " milliseconds\n");
 	}
 	
+	/**	Sorts the states by ascending population and prints the top 50
+	 */
 	public void ascendingPop(){
 		SortMethods sm = new SortMethods();
 		long startMillisec = System.currentTimeMillis();
@@ -213,6 +229,9 @@ public class Population {
 			+ " milliseconds\n");
 	}
 	
+	/**	Gets the user input and makes sure it is valid
+	 * 	@return choice		the number the user chose
+	 */
 	public int getInput(){
 		printMenu();
 		int choice = 0;
@@ -223,6 +242,8 @@ public class Population {
 		return choice;
 	}
 	
+	/**	Reads the file and stores all data into a list of Cities
+	 */
 	public void readFile(){
 		Scanner data = FileUtils.openToRead("usPopData2017.txt");
 		data.useDelimiter("[\t\n]");
