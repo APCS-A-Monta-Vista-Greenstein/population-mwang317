@@ -33,10 +33,10 @@ public class City implements Comparable<City> {
 			return this.population - other.population;
 		}
 		else if(!state.equalsIgnoreCase(other.state)){
-			return this.state.compareTo(other.state);
+			return this.state.compareTo(other.state); ////////////////
 		}
 		else{
-			return this.name.compareTo(other.name);
+			return this.name.compareTo(other.name); //////////////////
 		}
 	}
 	

@@ -47,23 +47,94 @@ public class Population {
 				descendingName();
 			}
 			else if(choice == 5){
-				
+				stateCities();
 			}
 			else if(choice == 6){
-				
+				findCity();
 			}
-			
-			
 		}
 		
+		System.out.println("\nThanks for using Population!");
 	}
 	
 	public void findCity(){
+		List<City> match = new ArrayList<City>();
 		
+		String input = Prompt.getString("\nEnter city name");
+		
+		for(int i = 0; i < cities.size(); i++){
+			City check = cities.get(i);
+			if(check.getCityName().equals(input)){
+				match.add(check);
+			}
+		}
+		
+		
+		if(match.size() == 0){
+			System.out.println("\nNo matching cities found");
+		}
+		else{
+			SortMethods sort = new SortMethods();
+			sort.mergeSort(match);
+			
+			System.out.println("\nCity " + input + " by population");
+			System.out.printf("%4s %-25s%-25s%-15s%10s%n", "", "State", "City", "Type", "Population");
+		
+			for(int i = 0; i < match.size(); i++){
+				City num =  match.get(match.size()-(i+1));
+				System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
+				num.getCityName(), num.getType(), num.getPopulation());
+			}
+		}
+		System.out.println();
 	}
 	
-	public void popByState(){
+	private void stateCities(){
+		String[] states = new String[]{"Alabama", "Alaska", "Arizona", "Arkansas",
+			"California", "Colorado", "Connecticut", "Delaware", "Florida",
+			"Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas",
+			"Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+			"Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
+			"New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina",
+			"North Dakota", "Ohio"};
+			
+		List<String> stateList = new ArrayList<String>();
 		
+		for(int i = 0; i < states.length; i++){
+			stateList.add(states[i]);
+		}
+		
+		String input = "";
+		do{
+			input = Prompt.getString("Enter state name (ie. Alabama)");
+			
+			if(!stateList.contains(input)){
+				System.out.println("ERROR: " + input + " is not valid");
+			}
+		}while(!stateList.contains(input));
+		
+		List<City> cityList = new ArrayList<City>();
+		
+		for(int i = 0; i < cities.size(); i++){
+			City check = cities.get(i);
+			if(check.getState().equals(input)){
+				cityList.add(check);
+			}
+		}
+		
+		SortMethods sort = new SortMethods();
+		sort.mergeSort(cityList);
+			
+		System.out.println("\nCity " + input + " by population");
+		System.out.printf("%4s %-25s%-25s%-15s%10s%n", "", "State", "City", "Type", "Population");
+		
+		for(int i = 0; i < 50; i++){
+			City num = cityList.get(cityList.size()-(i+1));
+			System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
+			num.getCityName(), num.getType(), num.getPopulation());
+		}
+		
+		System.out.println();
 	}
 	
 	public void descendingName(){
@@ -77,7 +148,7 @@ public class Population {
 		
 		for(int i = 0; i < 50; i++){
 			City num = cities.get(cities.size()-(i+1));
-			System.out.printf("%3d: %-25s%-25s%-15s%10d%n", i+1, num.getState(), 
+			System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
 				num.getCityName(), num.getType(), num.getPopulation());
 		}
 		
@@ -96,7 +167,7 @@ public class Population {
 		
 		for(int i = 0; i < 50; i++){
 			City num = cities.get(i);
-			System.out.printf("%3d: %-25s%-25s%-15s%10d%n", i+1, num.getState(), 
+			System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
 				num.getCityName(), num.getType(), num.getPopulation());
 		}
 		
@@ -115,7 +186,7 @@ public class Population {
 		
 		for(int i = 0; i < 50; i++){
 			City num = cities.get(cities.size()-(i+1));
-			System.out.printf("%3d: %-25s%-25s%-15s%10d%n", i+1, num.getState(), 
+			System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
 				num.getCityName(), num.getType(), num.getPopulation());
 		}
 		
@@ -134,7 +205,7 @@ public class Population {
 		
 		for(int i = 0; i < 50; i++){
 			City num = cities.get(i);
-			System.out.printf("%3d: %-25s%-25s%-15s%10d%n", i+1, num.getState(), 
+			System.out.printf("%3d: %-25s%-25s%-15s%,10d%n", i+1, num.getState(), 
 				num.getCityName(), num.getType(), num.getPopulation());
 		}
 		

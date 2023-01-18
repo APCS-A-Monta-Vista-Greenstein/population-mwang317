@@ -77,7 +77,7 @@ public class SortMethods {
 			isDone = false;
 			count = outer;
 			for(int inner = outer; inner >= 0 && !isDone; inner--){
-				if((arr.get(inner).getCityName()).compareTo(arr.get(count).getCityName()) > 0){
+				if((arr.get(inner).getCityName()).compareTo(arr.get(count).getCityName()) >= 0){
 					swap(arr, inner, count);
 					count = inner;
 				}

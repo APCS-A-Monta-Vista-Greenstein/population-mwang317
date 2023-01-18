@@ -91,7 +91,7 @@ public class Prompt
 	{
 		int val = 0;
 		do{
-			val = getInt(ask + " (" + min + ", " + max + ")");
+			val = getInt(ask);
 		} while(val < min || val > max);
 		return val;
 	}
